@@ -56,11 +56,11 @@
     <!-- jumbo start -->
     <section id="home" class="jumbotron text-center">
       <img
-        src="img/5.jpg"
+        src="img/5.png"
         alt="tukang tahu"
-        width="190"
-        height="150"
-        class="img-thumbnail"
+        width="175"
+        height="140"
+        style="border: 1px solid white; border-radius: 5px"
       />
       <h1 class="display-4">Hello, world!</h1>
       <p class="lead">
@@ -126,10 +126,7 @@
                 <img src="img/1.jpg" class="card-img-top" alt="kgtahu"
               /></a>
               <div class="card-body">
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
+                <p class="card-text">to do list coming soon</p>
               </div>
             </div>
           </div>
@@ -139,10 +136,7 @@
                 <img src="img/2.jpg" class="card-img-top" alt="kgtahu"
               /></a>
               <div class="card-body">
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
+                <p class="card-text">gallery coming soon</p>
               </div>
             </div>
           </div>
@@ -152,10 +146,17 @@
                 <img src="img/3.jpg" class="card-img-top" alt="kgtahu"
               /></a>
               <div class="card-body">
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
+                <p class="card-text">android xiaomi coming soon</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mt-3">
+            <div class="card">
+              <a href="">
+                <img src="img/4.jpg" class="card-img-top" alt="kgtahu"
+              /></a>
+              <div class="card-body">
+                <p class="card-text">game no concept unknown</p>
               </div>
             </div>
           </div>
@@ -181,32 +182,64 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-6">
-            <form>
+            <form name="submit-to-google-sheet">
+              <div
+                class="alert alert-success alert-dismissible fade show d-none tmblAlert"
+                role="alert"
+              >
+                <strong>hallo</strong> You should check in on some of those
+                fields below.
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="alert"
+                  aria-label="Close"
+                ></button>
+              </div>
               <div class="mb-3">
-                <label for="name" class="form-label">full name</label>
+                <label for="email" class="form-label">email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  aria-describedby="email"
+                  name="email"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="name" class="form-label">name</label>
                 <input
                   type="name"
                   class="form-control"
                   id="name"
                   aria-describedby="name"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="name" class="form-label">password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="password"
-                  aria-describedby="password"
+                  name="name"
                 />
               </div>
               <div class="mb-3">
                 <label for="pesan" class="form-label">pesan</label>
-                <textarea class="form-control" id="pesan" rows="3"></textarea>
+                <textarea
+                  class="form-control"
+                  id="pesan"
+                  rows="3"
+                  name="pesan"
+                ></textarea>
               </div>
 
-              <button onClick="Login()" type="submit" class="btn btn-success">
+              <button type="submit" class="btn btn-success tmblKirim">
                 kirim
+              </button>
+              <button
+                class="btn btn-primary d-none tmblLoading"
+                type="button"
+                disabled
+              >
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                Loading...
               </button>
             </form>
             <div>&nbsp</div>
@@ -238,6 +271,36 @@
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
     ></script>
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbxBV_VqOElt7iejJi74aA_ZmjugWnG3yN5C9vq-TTfEeVrJQkXWR3mSxIVvB-eGSDlGSw/exec";
+      const form = document.forms["submit-to-google-sheet"];
+
+      const tmblKirim = document.querySelector(".tmblKirim");
+      const tmblLoading = document.querySelector(".tmblLoading");
+      const tmblAlert = document.querySelector(".tmblAlert");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        //ketika tmbl diklik
+
+        //tampil loading tmbl kirik  hilang
+        tmblKirim.classList.toggle("d-none");
+        tmblLoading.classList.toggle("d-none");
+
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            console.log("Success!", response);
+            //tampil kirim loading hilang
+            tmblKirim.classList.toggle("d-none");
+            tmblLoading.classList.toggle("d-none");
+            tmblAlert.classList.toggle("d-none");
+            form.reset();
+          })
+
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
     <script src="script.js"></script>
   </body>
 </html>
