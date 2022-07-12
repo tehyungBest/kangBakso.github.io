@@ -19,28 +19,14 @@ History 1 contributor 306 lines (292 sloc) 10.4 KB
 
     <link rel="stylesheet" href="style.css" />
   </head>
-  <style>
-    .cobaLagi {
-      background-color: transparent; /* Green */
-      border: transparent;
-      color: white;
-      text-align: center;
-      display: inline-block;
-      font-size: 20px;
-      font-weight: 20px;
-    }
-
-    #home > img {
-      margin-top: -30px;
-    }
-  </style>
+  <style></style>
   <body>
     <!-- navbar start -->
     <nav
       class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm fixed-top rounded-2"
     >
       <div class="container-fluid">
-        <a class="navbar-brand">cobaPortofolio</a>
+        <a class="navbar-brand coeg">cobaPortofolio</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -85,11 +71,12 @@ History 1 contributor 306 lines (292 sloc) 10.4 KB
       />
       <br />
       <input type="range" name="merah" class="cobaAja" />
-      <h1 class="display-4">Hello, world!</h1>
+      <h1 class="display-4 huruf">Hello, world!</h1>
       <p class="lead">
         This is a simple hero unit, a simple jumbotron-style component for
         calling extra attention to featured content or information.
       </p>
+
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#0d6efd"
@@ -138,7 +125,7 @@ History 1 contributor 306 lines (292 sloc) 10.4 KB
 
     <!-- projek start -->
     <section id="projek">
-      <div class="container">
+      <div class="container babi">
         <div class="row text-center mb-3">
           <div class="col"><h2>projek</h2></div>
         </div>
@@ -146,40 +133,40 @@ History 1 contributor 306 lines (292 sloc) 10.4 KB
           <div class="col-md-4">
             <div class="card">
               <a href="">
-                <img src="img/1.jpg" class="card-img-top" alt="kgtahu"
+                <img src="img/.jpg" class="card-img-top" alt="kgtahu"
               /></a>
               <div class="card-body">
-                <p class="card-text">to do list coming soon</p>
+                <!-- <p class="card-text">to do list coming soon</p> -->
               </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="card">
               <a href="">
-                <img src="img/2.jpg" class="card-img-top" alt="kgtahu"
+                <img src="img/.jpg" class="card-img-top" alt="kgtahu"
               /></a>
               <div class="card-body">
-                <p class="card-text">gallery coming soon</p>
+                <!-- <p class="card-text">gallery coming soon</p> -->
               </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="card">
               <a href="">
-                <img src="img/3.jpg" class="card-img-top" alt="kgtahu"
+                <img src="img/.jpg" class="card-img-top" alt="kgtahu"
               /></a>
               <div class="card-body">
-                <p class="card-text">android xiaomi coming soon</p>
+                <!-- <p class="card-text">android xiaomi coming soon</p> -->
               </div>
             </div>
           </div>
           <div class="col-md-4 mt-3">
             <div class="card">
               <a href="">
-                <img src="img/4.jpg" class="card-img-top" alt="kgtahu"
+                <img src="img/.jpg" class="card-img-top" alt="kgtahu"
               /></a>
               <div class="card-body">
-                <p class="card-text">game no concept unknown</p>
+                <!-- <p class="card-text">game no concept unknown</p> -->
               </div>
             </div>
           </div>
@@ -321,29 +308,6 @@ History 1 contributor 306 lines (292 sloc) 10.4 KB
           })
 
           .catch((error) => console.error("Error!", error.message));
-      });
-
-      const smerah = document.querySelector("input[name = merah]");
-      const tangkap = document.querySelector(".jumbotron");
-
-      smerah.addEventListener("input", function () {
-        const r = smerah.value;
-        const g = Math.round(Math.random() * 255 + 1);
-        const b = Math.round(Math.random() * 255 + 1);
-        console.log(r + " " + g + " " + b);
-        const tangkap = document.querySelector(".jumbotron");
-        tangkap.style.backgroundColor = "rgb(" + r + " " + g + " " + b + ")";
-      });
-
-      const tmblBaru = document.createElement("button");
-      const textBaru = document.createTextNode("reset");
-      tmblBaru.appendChild(textBaru);
-      tmblBaru.setAttribute("class", "cobaLagi");
-      const li3 = document.querySelector(".li3");
-      li3.before(tmblBaru);
-
-      tmblBaru.addEventListener("click", function () {
-        tangkap.removeAttribute("style");
       });
     </script>
     <script src="script.js"></script>
